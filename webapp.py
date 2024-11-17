@@ -6,12 +6,23 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 
 import os
-import pandas as pd
 
-# Get the directory where the script is located
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-# Read the CSV file using the base directory
-df = pd.read_csv(os.path.join(BASE_DIR, 'gym_members_exercise_tracking.csv'))
+model_filename = 'linear_regression_model.pkl'
+csv_filename = 'gym_members_exercise_tracking.csv'
+
+# Load the CSV file
+if os.path.exists(csv_filename):
+    df = pd.read_csv(csv_filename)
+else:
+    print(f"File {csv_filename} not found.")
+
+# Load the model file
+if os.path.exists(model_filename):
+    with open(model_filename, 'rb') as file:
+        model = pickle.load(file)
+else:
+    print(f"File {model_filename} not found.")
+
 
 
 # Streamlit App Title
