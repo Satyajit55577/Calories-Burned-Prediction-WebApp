@@ -16,12 +16,11 @@ if os.path.exists(csv_filename):
 else:
     print(f"File {csv_filename} not found.")
 
-# Load the model file
-if os.path.exists(model_filename):
-    with open(model_filename, 'rb') as file:
-        model = pickle.load(file)
-else:
-    print(f"File {model_filename} not found.")
+
+model_filename = 'linear_regression_model.pkl'
+with open(model_filename, 'rb') as file:
+    model = pickle.load(file)
+
 
 
 
@@ -85,13 +84,6 @@ ax7.set_title('Fat Percentage across Workout Types')
 st.pyplot(fig7)
 
 st.write("Visualizations help us better understand the data and the relationships between different features.")
-
-# Load the trained linear regression model
-model_filename = r"C:\Users\Satyajit\Documents\Masai_ML_Project\linear_regression_model.pkl"
-with open(model_filename, 'rb') as file:
-    model = pickle.load(file)
-    print("Model loaded successfully!")
-
 
 st.title("Enter features manually to predict Calories Burned.")
 
